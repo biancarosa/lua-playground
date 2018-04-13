@@ -20,3 +20,9 @@ local string_template = "hello im a template"
 local tpl = template.compile(string_template)
 print(tpl{message = 'oi'})
 print('\n')
+
+print('Compiling with error')
+local string_template = "hello im a wrong {{a['}} template"
+local status, err = pcall(function () template.compile(string_template) end)
+print(err)
+print(status)
